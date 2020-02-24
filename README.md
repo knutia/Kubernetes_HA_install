@@ -112,7 +112,7 @@ Then you can join any number of worker nodes by running the following on each as
 kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 \
     --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0
 ~~~
-**NB NB! SAVE OFF THE JOIN COMMANDS FROM THE OUTPUT. IT WILL BE WERY HARD TO RECREATE THEM WHEN YOU NEED THEM FOR THE OTHER MASTERS AND WORKER NODES LATER. ASK ME HOW I KNOW.**
+**NB NB! SAVE OFF THE JOIN COMMANDS FROM THE OUTPUT. IT WILL BE WERY HARD TO RECREATE THEM WHEN YOU NEED THEM FOR THE OTHER [MASTERS](#repeate-for-master-2-and-3-vms) AND [WORKER](#repeate-for-all-worker-vms) NODES LATER. ASK ME HOW I KNOW.**
   
 As the output tells you configure our account on the master to have admin access to the API server from a non-privileged account.
 ~~~~
@@ -141,7 +141,7 @@ sudo kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 --discovery
 ~~~~
 
 # Repeate for all worker VMs
-1. Join the cluster as a worker by using join command output from step 3 in Create First Master
+1. Join the cluster as a worker by using join command output from [step 3 in Create First Master](#the-output-is-important)
 
 Example:  
 ~~~~
