@@ -1,7 +1,7 @@
 # Kubernetes_HA_install
 Use 7 VMs to create a Kubernetes_HA cluster
 
-#Setup / Preporation
+# Setup / Preporation
    1. 7 VMs Ubuntu 18.04.1.0, 1 Loadbalanser, 3 master, 3 nodes.
    2. Static IPs on individual VMs
    3. /etc/hosts hosts file includes name to IP mappings for VMs or DNS
@@ -38,7 +38,7 @@ sudo systemctl enable docker.service
 
 #END REPEAT FOR ALL 6 VMs
 
-#Create Loadbalancer
+# Create Loadbalancer
 
 #Create nginx config file
 sudo vi /etc/nginx/nginx.conf
@@ -48,7 +48,7 @@ sudo vi /etc/nginx/nginx.conf
 sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -p 6443:6443 -v /etc/nginx/nginx.conf:/etc/nginx/nginx.conf nginx:1.14
 
 
-#Create First Master
+# Create First Master
 
 #Only on the master, download the yaml files for the pod network
 wget https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
