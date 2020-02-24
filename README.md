@@ -13,10 +13,10 @@ Use 7 VMs to create a Kubernetes_HA cluster
 
 #Disable swap, swapoff then edit your fstab removing any entry for swap partitions
 #You can recover the space with fdisk. You may want to reboot to ensure your config is ok.
-´´´ bach
+~~~~
 sudo swapoff -a
 sudo vi /etc/fstab
-```
+~~~~
 #Add Google's apt repository gpg key NB NB! Not needed on Loadbalanser
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
