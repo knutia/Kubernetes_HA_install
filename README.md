@@ -133,7 +133,7 @@ kubectl get pods --all-namespaces --watch
 
 # Repeate for Master 2 and 3 VMs
 
-1. Join the cluster as a master by using join command output from step 3 in Create First Master [Create First Master](#Create-First-Master) 
+1. Join the cluster as a master by using join command output from step 3 in Create First Master [step 3 in Create First Master](#the-output-is-important)
 
 Example:  
 sudo kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0 --control-plane --certificate-key 063d459df3f70799f3fde9cd0b49ef5ba2ebb85571a1e2d107f658318b813144
