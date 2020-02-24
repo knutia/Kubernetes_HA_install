@@ -149,7 +149,7 @@ sudo kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 --discovery
 ~~~~
 
 # REF
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/
-Installing a Pod network add-on https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
-HAProxy instead of NGINX as the Load Balancer https://blog.csnet.me/k8s-thw/part6/
-Maintaining / Upgrading kubeadm clusters https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/  
+Installing a Pod network add-on https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network  
+HAProxy instead of NGINX as the Load Balancer https://blog.csnet.me/k8s-thw/part6/  
+Maintaining / Upgrading kubeadm clusters https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/  
