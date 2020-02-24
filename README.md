@@ -147,3 +147,9 @@ Example:
 ~~~~
 sudo kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0 --control-plane --certificate-key 063d459df3f70799f3fde9cd0b49ef5ba2ebb85571a1e2d107f658318b813144
 ~~~~
+
+# REF
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/
+Installing a Pod network add-on https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+HAProxy instead of NGINX as the Load Balancer https://blog.csnet.me/k8s-thw/part6/
+Maintaining / Upgrading kubeadm clusters https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
