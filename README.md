@@ -82,21 +82,64 @@ sudo kubeadm init --pod-network-cidr=CHOSEN_CIDER_FOR_POD_NETWORK --control-plan
 Example:  
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "192.168.2.190:6443" --upload-certs
 
+## The output is important
+the output shud be like this if all whent well:
+~~~
+Your Kubernetes control-plane has initialized successfully!
 
-4. Configure our account on the master to have admin access to the API server from a non-privileged account.
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of the control-plane node running the following command on each as root:
+
+  kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 \
+    --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0 \
+    --control-plane --certificate-key 063d459df3f70799f3fde9cd0b49ef5ba2ebb85571a1e2d107f658318b813144
+
+Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
+As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use
+"kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 \
+    --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0
+~~~
+**NB NB! SAVE OFF THE JOIN COMMANDS FROM THE OUTPUT. IT WILL BE WERY HARD TO RECREATE THEM WHEN YOU NEED THEM FOR THE OTHER MASTERS AND WORKER NODES LATER. ASK ME HOW I KNOW.
+  
+As the output tells you configure our account on the master to have admin access to the API server from a non-privileged account.
 ~~~~
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ~~~~
-
-5. Download yaml files for your pod network
+  
+Also as the output tells us deploy Pod network by applying downloaded yaml files from step 1.
 ~~~~
 kubectl apply -f rbac-kdd.yaml
 kubectl apply -f calico.yaml
 ~~~~
-
-6. Gives you output over time, rather than repainting the screen on each iteration.
+Make shure all pods is running ok by watching them start.
 ~~~~
 kubectl get pods --all-namespaces --watch
 ~~~~
+
+# Repeate for Master 2 and 3 VMs
+
+1. Join the cluster as a master by using join command output from step 3 in Create First Master [Create First Master](#Create-First-Master) 
+
+Example:  
+sudo kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0 --control-plane --certificate-key 063d459df3f70799f3fde9cd0b49ef5ba2ebb85571a1e2d107f658318b813144
+
+# Repeate for all worker VMs
+1. Join the cluster as a worker by using join command output from step 3 in Create First Master
+
+Example:  
+sudo kubeadm join 192.168.2.190:6443 --token hwko0g.b3xt3oqw30icpo89 --discovery-token-ca-cert-hash sha256:31d9f017c609a96ce13f503d6ecc99834b64w457ee703622ab471b125fd303c0 --control-plane --certificate-key 063d459df3f70799f3fde9cd0b49ef5ba2ebb85571a1e2d107f658318b813144
