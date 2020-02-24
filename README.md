@@ -55,6 +55,7 @@ wget https://raw.githubusercontent.com/knutia/Kubernetes_HA_install/master/nginx
 mv ./nginx.conf /etc/nginx/nginx.conf
 sudo vi /etc/nginx/nginx.conf
 ~~~~
+Replase <IP/DNSNAME_MASTER_1>, <IP/DNSNAME_MASTER_2> and <IP/DNSNAME_MASTER_3> whit the real ip or FQDN for the 3 masters.
 
 2. Start nginx server using config file
 ~~~~
@@ -78,8 +79,8 @@ vi calico.yaml
 ~~~~
 sudo kubeadm init --pod-network-cidr=CHOSEN_CIDER_FOR_POD_NETWORK --control-plane-endpoint "LOAD_BALANCER_DNS:LOAD_BALANCER_PORT" --upload-certs
 ~~~~
-Example:
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "192.168.2.190:6443" --upload-certs
+Example:*.
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "192.168.2.190:6443" --upload-certs*.
 
 
 4. Configure our account on the master to have admin access to the API server from a non-privileged account.
