@@ -1,6 +1,18 @@
 # Kubernetes_HA_install
 Use 7 VMs to create a Kubernetes_HA cluster
 
+
++----------------------------------+---------+------------------------+----------------+
+|               Col1               |  Col2   |          Col3          | Numeric Column |
++----------------------------------+---------+------------------------+----------------+
+| Value 1                          | Value 2 | 123                    |           10.0 |
+| Separate                         | cols    | with a tab or 4 spaces |       -2,027.1 |
+| This is a row with only one cell |         |                        |                |
++----------------------------------+---------+------------------------+----------------+
+
+
+
+
 # Setup / Preporation
 1. 7 VMs Ubuntu 18.04.1.0, 1 Loadbalanser, 3 master, 3 nodes.
 2. Static IPs on individual VMs
