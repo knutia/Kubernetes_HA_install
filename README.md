@@ -49,36 +49,41 @@ Use 7 VMs to create a Kubernetes_HA cluster
 
 # REPEAT FOR ALL 7 VMs
 
-1. Disable swap, swapoff then edit your fstab removing any entry for swap partitions. You can recover the space with fdisk. You may want to reboot to ensure your config is ok.
+1. Add all nodes to the /etc/hosts hosts file includes name to IP mappings for VMs or DNS
+~~~
+array=("192.168.2.190 c1-lb" "192.168.2.191 c1-master1" "192.168.2.192 c1-master2" "192.168.2.193 c1-master3" "192.168.2.194 c1-worker1" "192.168.2.195 c1-worker2" "192.168.2.195 c1-worker3")   
+for ix in ${!array[*]}; do printf "%s\n" "${array[$ix]}">>./temp_hosts; done
+~~~
+2. Disable swap, swapoff then edit your fstab removing any entry for swap partitions. You can recover the space with fdisk. You may want to reboot to ensure your config is ok.
 ~~~~
 sudo swapoff -a
 sudo vi /etc/fstab
 ~~~~
 
-2. Add Google's apt repository gpg key **NB NB! Not needed on Loadbalanser**
+3. Add Google's apt repository gpg key **NB NB! Not needed on Loadbalanser**
 ~~~~
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 ~~~~
 
-3. Add the Kubernetes apt repository **NB NB! Not needed on Loadbalanser**
+4. Add the Kubernetes apt repository **NB NB! Not needed on Loadbalanser**
 ~~~~
 sudo bash -c 'cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF'
 ~~~~
 
-4. Update the package list and use apt-cache to inspect versions available in the repository
+5. Update the package list and use apt-cache to inspect versions available in the repository
 ~~~~
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoremove -y
 ~~~~
 
-5. Install the required packages, if needed we can request a specific version **NB NB! On Loadbalanser only install docker.io rest is not needed.**
+6. Install the required packages, if needed we can request a specific version **NB NB! On Loadbalanser only install docker.io rest is not needed.**
 ~~~~
 sudo apt-get install -y docker.io kubelet kubeadm kubectl
 sudo apt-mark hold docker.io kubelet kubeadm kubectl
 ~~~~
 
-6. Ensure both are set to start when the system starts up.
+7. Ensure both are set to start when the system starts up.
 ~~~~
 sudo systemctl enable kubelet.service
 sudo systemctl enable docker.service
