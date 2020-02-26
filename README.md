@@ -30,7 +30,7 @@ EOF'
 
 4. Update the package list and use apt-cache to inspect versions available in the repository
 ~~~~
-sudo apt-get update && sudo apt-get upgrade -y &&  sudo apt autoremove -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoremove -y
 ~~~~
 
 5. Install the required packages, if needed we can request a specific version **NB NB! On Loadbalanser only install docker.io rest is not needed.**
