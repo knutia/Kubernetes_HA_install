@@ -52,7 +52,7 @@ Use 7 VMs to create a Kubernetes_HA cluster
 1. Add all nodes to the /etc/hosts hosts file includes name to IP mappings for VMs or DNS
 ~~~
 array=("192.168.2.190 c1-lb" "192.168.2.191 c1-master1" "192.168.2.192 c1-master2" "192.168.2.193 c1-master3" "192.168.2.194 c1-worker1" "192.168.2.195 c1-worker2" "192.168.2.195 c1-worker3")   
-for ix in ${!array[*]}; do printf "%s\n" "${array[$ix]}">>./temp_hosts; done
+for ix in ${!array[*]}; do printf "%s\n" "${array[$ix]}">>/etc/hosts; done
 ~~~
 2. Disable swap, swapoff then edit your fstab removing any entry for swap partitions. You can recover the space with fdisk. You may want to reboot to ensure your config is ok.
 ~~~~
