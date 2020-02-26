@@ -50,11 +50,23 @@ sudo systemctl enable docker.service
 1. Create nginx config file
 ~~~~
 mkdir /etc/nginx
-wget https://raw.githubusercontent.com/knutia/Kubernetes_HA_install/master/nginx.conf
-mv ./nginx.conf /etc/nginx/nginx.conf
+wget -O /etc/nginx/nginx.conf https://raw.githubusercontent.com/knutia/Kubernetes_HA_install/master/nginx.conf
 sudo vi /etc/nginx/nginx.conf
 ~~~~
-Replase <IP/DNSNAME_MASTER_1>, <IP/DNSNAME_MASTER_2> and <IP/DNSNAME_MASTER_3> whit the real ip or FQDN for the 3 masters.
+Replase <IP_DNSNAME_MASTER_1>, <IP_DNSNAME_MASTER_2> and <IP_DNSNAME_MASTER_3> whit the real ip or FQDN for the 3 master nodes.
+Eksample:
+~~~
+sed -i 's/<IP_DNSNAME_MASTER_1>/192.168.2.191/g' /home/kia/test/nginx.conf
+sed -i 's/<IP_DNSNAME_MASTER_2>/192.168.2.192/g' /home/kia/test/nginx.conf
+sed -i 's/<IP_DNSNAME_MASTER_3>/192.168.2.193/g' /home/kia/test/nginx.conf
+~~~
+Replase <IP_DNSNAME_WORKER_1>, <IP_DNSNAME_WORKER_2> and <IP_DNSNAME_WORKER_3> whit the real ip or FQDN for the 3 worker nodes.
+Eksample:
+~~~
+sed -i 's/<IP_DNSNAME_WORKER_1>/192.168.2.194/g' /home/kia/test/nginx.conf
+sed -i 's/<IP_DNSNAME_WORKER_2>/192.168.2.195/g' /home/kia/test/nginx.conf
+sed -i 's/<IP_DNSNAME_WORKER_3>/192.168.2.196/g' /home/kia/test/nginx.conf
+~~~
 
 2. Start nginx server using config file
 ~~~~
