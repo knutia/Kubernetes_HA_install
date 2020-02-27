@@ -92,22 +92,22 @@ sudo systemctl enable docker.service
 
 1. Create nginx config file
 ~~~~
-mkdir /etc/nginx
-wget -O /etc/nginx/nginx.conf https://raw.githubusercontent.com/knutia/Kubernetes_HA_install/master/nginx.conf
+sudo mkdir /etc/nginx
+sudo wget -O /etc/nginx/nginx.conf https://raw.githubusercontent.com/knutia/Kubernetes_HA_install/master/nginx.conf
 ~~~~
 Replase <IP_DNSNAME_MASTER_1>, <IP_DNSNAME_MASTER_2> and <IP_DNSNAME_MASTER_3> whit the real ip or FQDN for the 3 master nodes in the /etc/nginx/nginx.conf file.
 Eksample:
 ~~~
-sed -i 's/<IP_DNSNAME_MASTER_1>/192.168.2.191/g' /etc/nginx/nginx.conf
-sed -i 's/<IP_DNSNAME_MASTER_2>/192.168.2.192/g' /etc/nginx/nginx.conf
-sed -i 's/<IP_DNSNAME_MASTER_3>/192.168.2.193/g' /etc/nginx/nginx.conf
+sudo sed -i 's/<IP_DNSNAME_MASTER_1>/192.168.2.191/g' /etc/nginx/nginx.conf
+sudo sed -i 's/<IP_DNSNAME_MASTER_2>/192.168.2.192/g' /etc/nginx/nginx.conf
+sudo sed -i 's/<IP_DNSNAME_MASTER_3>/192.168.2.193/g' /etc/nginx/nginx.conf
 ~~~
 Replase <IP_DNSNAME_WORKER_1>, <IP_DNSNAME_WORKER_2> and <IP_DNSNAME_WORKER_3> whit the real ip or FQDN for the 3 worker nodes in the /etc/nginx/nginx.conf file.
 Eksample:
 ~~~
-sed -i 's/<IP_DNSNAME_WORKER_1>/192.168.2.194/g' /etc/nginx/nginx.conf
-sed -i 's/<IP_DNSNAME_WORKER_2>/192.168.2.195/g' /etc/nginx/nginx.conf
-sed -i 's/<IP_DNSNAME_WORKER_3>/192.168.2.196/g' /etc/nginx/nginx.conf
+sudo sed -i 's/<IP_DNSNAME_WORKER_1>/192.168.2.194/g' /etc/nginx/nginx.conf
+sudo sed -i 's/<IP_DNSNAME_WORKER_2>/192.168.2.195/g' /etc/nginx/nginx.conf
+sudo sed -i 's/<IP_DNSNAME_WORKER_3>/192.168.2.196/g' /etc/nginx/nginx.conf
 ~~~
 
 2. Start nginx server using config file
