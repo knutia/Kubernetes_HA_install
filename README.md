@@ -123,7 +123,7 @@ wget https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation
 wget https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 ~~~~
 
-2. Look inside calico.yaml and find the network range, adjust if needed.
+2. Look inside calico.yaml and find the network range, adjust if needed. (serch for CALICO_IPV4POOL_CIDR)
 ~~~~
 vi calico.yaml
 ~~~~
